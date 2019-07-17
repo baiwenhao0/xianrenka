@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use DB;
 class UsersController extends Controller
 {
     //
@@ -15,6 +15,8 @@ class UsersController extends Controller
         return view('welcome');
     }
     public function help(Request $request){
+        $res = DB::table('users')->get();
+        dd($res);
         return view('welcome');
     }
     public function login(Request $request){
