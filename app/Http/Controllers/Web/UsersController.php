@@ -10,7 +10,7 @@ class UsersController extends Controller
 {
     public function create()
     {
-        return view('users.create');
+        return view('web.users.create');
     }
 
     public function show(User $user)
@@ -34,9 +34,9 @@ class UsersController extends Controller
         return view('welcome');
     }
     //注册页面
-    public function userCreate(Request $request){
+    public function signup(Request $request){
 //        dd('userCreate');
-        return view('web.users.userCreate');
+        return view('web.users.create');
     }
     //注册用户
     public function userReg(Request $request){
