@@ -22,5 +22,5 @@ Route::get('/about', 'Web\UsersController@about')->name('about');
 Route::get('/login', 'Web\UsersController@login')->name('login');
 Route::get('userCreate', 'Web\UsersController@userCreate')->name('userCreate');
 Route::get('user/reg', 'Web\UsersController@userReg')->name('userReg');
-
-
+Route::resource('users', 'Web\UsersController');    //资源路由器
+//Route::get('/users/{user}', 'Web\UsersController@show')->name('web.users.show');

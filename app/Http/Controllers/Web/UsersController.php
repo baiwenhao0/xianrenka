@@ -4,9 +4,19 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 use DB;
 class UsersController extends Controller
 {
+    public function create()
+    {
+        return view('users.create');
+    }
+
+    public function show(User $user)
+    {
+        return view('web.users.show', compact('user'));
+    }
     //
     public function home(Request $request){
         return view('welcome');
