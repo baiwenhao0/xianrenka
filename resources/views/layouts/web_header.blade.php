@@ -9,7 +9,7 @@
 @include('layouts._web_nav')
 
 <div class="container">
-
+    @include('layouts._messages')
     @yield('content')
     @include('layouts._web_footer')
 

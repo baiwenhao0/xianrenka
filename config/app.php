@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'PRC',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,8 @@ return [
     |
     */
 
-    'locale' => 'en',
+//    'locale' => 'en',   使用中文翻译包，还需要将这里替换掉
+    'locale' => 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -158,10 +159,10 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
-        Illuminate\Translation\TranslationServiceProvider::class,
+//        Illuminate\Translation\TranslationServiceProvider::class,//中间件翻译包文件，替换成下面这个
+        Overtrue\LaravelLang\TranslationServiceProvider::class,   //网上别人写的翻译包，可以直接用
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
