@@ -33,6 +33,16 @@ footer {
         height: 17px;
         }
 }
+/* Users edit */
+
+    .gravatar_edit {
+            margin: 15px auto;
+            text-align: center;
+        .gravatar {
+            float: none;
+            max-width: 100px;
+            }
+    }
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
