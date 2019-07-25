@@ -19,8 +19,13 @@ Route::get('/', 'Web\UsersController@home')->name('home');
 Route::get('/help', 'Web\UsersController@help')->name('help');
 
 Route::get('/about', 'Web\UsersController@about')->name('about');
-Route::get('/login', 'Web\UsersController@login')->name('login');
+//Route::get('/login', 'Web\UsersController@login')->name('login');
 Route::get('signup', 'Web\UsersController@signup')->name('signup');
 Route::get('user/reg', 'Web\UsersController@userReg')->name('userReg');
 Route::resource('users', 'Web\UsersController');    //资源路由器
 Route::get('/users/{user}', 'Web\UsersController@show')->name('web.users.show');
+
+
+Route::get('login', 'SessionsController@create')->name('login');
+Route::post('login', 'SessionsController@store')->name('login');
+Route::delete('logout', 'SessionsController@destroy')->name('logout');
