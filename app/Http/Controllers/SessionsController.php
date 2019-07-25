@@ -17,7 +17,7 @@ class SessionsController extends Controller
     {
         $credentials = $this->validate($request, [
             'email' => 'required|email|max:255',
-            'password' => 'required'
+            'password' => 'required | min:6'
         ]);
         if (Auth::attempt($credentials, $request->has('remember'))) {
             session()->flash('success', '欢迎回来！');
