@@ -9,6 +9,20 @@ use DB;
 use Auth;
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['show', 'create', 'store','index']
+        ]);
+        $this->middleware('guest', [
+            'only' => ['create']
+        ]);
+    }
+    public function index()
+    {
+        $users = User::paginate(10);
+        return view('web.users.index', compact('users'));
+    }
     public function create()
     {
         return view('web.users.create');
@@ -34,16 +48,18 @@ class UsersController extends Controller
 
         Auth::login($user);
         session()->flash('success', '欢迎，您将在这里开启一段新的旅程~');
-        return redirect()->route('web.users.show', [$user]);
+        return redirect()->route('users.show', [$user]);
     }
     //修改用户
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view('web.users.edit', compact('user'));
     }
     //更新用户信息
     public function update(User $user, Request $request)
     {
+        $this->authorize('update', $user);
         $this->validate($request, [
             'name' => 'required|max:50',
             'password' => 'required|confirmed|min:6'
