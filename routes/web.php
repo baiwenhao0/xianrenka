@@ -18,13 +18,11 @@ Route::get('/', 'StaticPagesController@home')->name('home');
 Route::get('/help', 'StaticPagesController@help')->name('help');
 Route::get('/about', 'StaticPagesController@about')->name('about');
 
-//Route::get('/login', 'Web\UsersController@login')->name('login');
 Route::get('signup', 'Web\UsersController@signup')->name('signup');
-Route::get('user/reg', 'Web\UsersController@userReg')->name('userReg');
 Route::resource('users', 'Web\UsersController');    //资源路由器
-
-
 
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');
 Route::delete('logout', 'SessionsController@destroy')->name('logout');
+
+Route::get('signup/confirm/{token}', 'Web\UsersController@confirmEmail')->name('confirm_email');
