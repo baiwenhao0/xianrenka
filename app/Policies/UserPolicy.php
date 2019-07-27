@@ -9,10 +9,6 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
-    public function update(User $currentUser, User $user)
-    {
-        return $currentUser->id === $user->id;
-    }
 
     /**
      * Create a new policy instance.
@@ -24,4 +20,15 @@ class UserPolicy
         //
 
     }
+    //是否登录
+    public function update(User $currentUser, User $user)
+    {
+        return $currentUser->id === $user->id;
+    }
+    //授权是否有删除权限功能
+    public function destroy(User $currentUser, User $user)
+    {
+        return $currentUser->is_admin && $currentUser->id !== $user->id;
+    }
+
 }
