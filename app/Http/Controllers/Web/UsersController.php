@@ -89,13 +89,13 @@ class UsersController extends Controller
     {
         $view = 'web.emails.confirm';
         $data = compact('user');
-        $from = 'summer@example.com';
-        $name = 'Summer';
+//        $from = 'summer@example.com';
+//        $name = 'Summer';
         $to = $user->email;
-        $subject = "感谢注册 Weibo 应用！请确认你的邮箱。";
+        $subject = "感谢注册 仙人咖 应用！请确认你的邮箱。";
 //        dd($subject);
-        Mail::send($view, $data, function ($message) use ($from, $name, $to, $subject) {
-            $message->from($from, $name)->to($to)->subject($subject);
+        Mail::send($view, $data, function ($message) use ($to, $subject) {
+            $message->to($to)->subject($subject);
         });
     }
     //激活用户
