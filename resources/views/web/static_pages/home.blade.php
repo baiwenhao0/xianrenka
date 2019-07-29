@@ -7,6 +7,9 @@
                 <section class="status_form">
                     @include('web.statuses._status_form')
                 </section>
+                <h4>微博列表</h4>
+                <hr>
+                @include('web.statuses._feed')
             </div>
             <aside class="col-md-4">
                 <section class="user_info">
