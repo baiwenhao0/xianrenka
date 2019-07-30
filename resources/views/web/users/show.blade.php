@@ -7,6 +7,9 @@
             <section class="user_info">
                 @include('layouts._user_info', ['user' => $user])
             </section>
+            @if (Auth::check())
+                @include('web.users._follow_form')
+            @endif
             <section class="stats mt-2">
                 @include('web.statuses._stats', ['user' => $user])
             </section>

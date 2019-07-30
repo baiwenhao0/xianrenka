@@ -41,7 +41,9 @@ Route::resource('statuses', 'Web\StatusesController', ['only' => ['store', 'dest
 Route::get('/users/{user}/followings', 'Web\UsersController@followings')->name('users.followings');
 Route::get('/users/{user}/followers', 'Web\UsersController@followers')->name('users.followers');
 
-
+//关注用户和取消用户功能
+Route::post('/users/followers/{user}', 'Web\FollowersController@store')->name('followers.store');
+Route::delete('/users/followers/{user}', 'Web\FollowersController@destroy')->name('followers.destroy');
 
 
 
