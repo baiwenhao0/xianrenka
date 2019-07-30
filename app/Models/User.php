@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
-
+use Auth;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -66,7 +66,10 @@ class User extends Authenticatable
     //获取关注用户信息
     public function feed()
     {
-        return $this->statuses()
+        $user_ids = $this->followings->pluck('id')->toArray();
+        array_push($user_ids, $this->id);
+        return Status::whereIn('user_id', $user_ids)
+            ->with('user')
             ->orderBy('created_at', 'desc');
     }
     //关联用户表和粉丝表ID,我们可以通过 followers 来获取粉丝关系列表
